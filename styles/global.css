@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Libre Franklin", sans-serif;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: baseline;
+}
+
+p {
+  font-family: "Bitter", serif;
+}
+
+.section-header h3 {
+  text-transform: uppercase;
+  position: absolute;
+  top: -0.6rem;
+  left: 30%;
+  transform: translateX(-30%);
+  padding: 0 2rem;
+  background-color: white;
+}
+
+.section-header {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  margin: 1rem 0;
+  background-color: black;
+}
+
+.blog-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 30%;
+  transform: translateX(-30%);
+  gap: 2rem;
+}
