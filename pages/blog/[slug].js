@@ -1,39 +1,41 @@
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import SyntaxHighlighter from "react-syntax-highlighter";
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import marked from 'marked'
+import link from 'next/link'
+import Image from 'next/image'
 
-export const getStaticPaths = async () => {
-  const files = fs.readdirSync(path.join("posts"));
+export default function BlogPost({
+  frontmatter: {title,date, cover_image},
+  slug,
+  content,
+}){
+  return <div>{title}<Image src={cover_image} height={200} width={200} /></div>
+}
 
-  const paths = files.map((filename) => ({
+export async function getStaticPaths(){
+  const files = fs.readdirSync(path.join('posts'))
+
+  const paths = files.map(filename => ({
     params: {
-      slug: filename.replace(".mdx", ""),
-    },
-  }));
+      slug: filename.replace(".md", "")
+    }
+  }))
 
   return {
     paths,
-    fallback: false,
-  };
-};
+    fallback: false
+  }
+}
 
-export const getStaticProps = async ({ params: { slug } }) => {
-  const markdownWithMeta = fs.readFileSync(
-    path.join("posts", slug + ".mdx"),
-    "utf-8"
-  );
+export async function getStaticProps({params: {slug}}){
+  const markdownWithMeta = fs.readFileSync(path.join('posts', slug + ".md"), 'utf-8')
 
-  const { data: frontMatter, content } = matter(markdownWithMeta);
-  const mdxSource = await serialize(content);
+  const {data:frontmatter, content} = matter(markdownWithMeta)
 
-  return {
-    props: {
-      frontMatter,
+  return{
+    props: {frontmatter,
       slug,
-      mdxSource,
-    },
-  };
-};
+      content}
+  }
+}
