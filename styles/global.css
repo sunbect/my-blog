@@ -1,45 +1,248 @@
+@font-face {
+  font-family: Inter;
+  src: url(/fonts/Inter.ttf);
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(/fonts/Montserrat.ttf);
+}
+
+:root {
+  --dark-lava: #463f3a;
+  --middle-grey: #8a817c;
+  --pale-silver: #bcb8b1;
+  --isabelline: #f4f3ee;
+  --melon: #e0afa0;
+}
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Libre Franklin", sans-serif;
 }
 
-nav {
+/* navbar.js */
+
+.navbar {
+  padding: 1rem;
   display: flex;
   gap: 1rem;
-  padding: 1rem;
-  align-items: baseline;
+  font-size: 14px;
+  background-color: var(--pale-silver);
+  align-items: center;
+  font-family: "Montserrat";
 }
 
-p {
-  font-family: "Bitter", serif;
+.navbar a {
+  color: var(--dark-lava);
+  text-decoration: none;
 }
 
-.section-header h3 {
+.navbar a:hover {
+  color: var(--middle-grey);
+}
+
+.navbar h1 {
   text-transform: uppercase;
+  font-variation-settings: "wght" 700;
+}
+
+.navbar h2 {
+  text-decoration: underline;
+}
+
+/* index.js */
+
+.home-page {
+  background-color: var(--isabelline);
+}
+
+/* divider */
+
+.divider {
+  height: 1px;
+  max-width: 600px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: black;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-variation-settings: "wght" 700;
+  color: var(--dark-lava);
+}
+
+.divider h4 {
   position: absolute;
   top: -0.6rem;
-  left: 30%;
-  transform: translateX(-30%);
-  padding: 0 2rem;
-  background-color: white;
+  left: 40%;
+  transform: translateX(-60%);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: var(--isabelline);
 }
 
-.section-header {
+/* about */
+
+.about {
+  max-width: 600px;
   position: relative;
-  height: 1px;
-  width: 100%;
-  margin: 1rem 0;
-  background-color: black;
+  padding: 3em;
+  margin: auto;
+  display: flex;
+  gap: 1rem;
+  font-family: "Inter", sans-serif;
+  color: var(--dark-lava);
 }
 
-.blog-list {
-  margin: 2rem 0;
+.about .image {
+  height: 184px;
+}
+
+.about .socials {
+  position: absolute;
+  bottom: 3rem;
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 2rem;
+}
+
+.about .resume {
+  font-size: 1rem !important;
+}
+
+.about .socials a {
+  height: 32px;
+}
+
+.about .socials svg {
+  color: var(--dark-lava);
+  cursor: pointer;
+}
+
+.about .socials svg:hover {
+  color: var(--middle-grey);
+  cursor: pointer;
+}
+
+.about .text p {
+  width: 40ch;
+}
+
+/* work */
+
+.work {
+  max-width: 600px;
+  padding: 1rem;
+  margin: 3rem auto;
+  font-family: "Inter", sans-serif;
+  color: var(--dark-lava);
+}
+
+.work h4 {
+  font-family: Montserrat;
+}
+
+.work h5 {
+  color: var(--middle-grey);
+  font-weight: 400;
+}
+
+.work p {
+  max-width: 50ch;
+}
+
+.work .position {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  left: 30%;
-  transform: translateX(-30%);
-  gap: 2rem;
+  gap: 0.2rem;
+}
+
+/* posts */
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  color: var(--dark-lava);
+}
+
+.post {
+  max-width: 600px;
+  margin: 1rem;
+  margin-bottom: 1rem;
+}
+.post p {
+  margin-bottom: 1rem;
+  max-width: 40ch;
+  font-size: 0.9rem;
+}
+
+.post a {
+  float: right;
+  color: black;
+  font-weight: bold;
+}
+
+.post h4 {
+  color: var(--middle-grey);
+  font-weight: 400;
+}
+
+.post .read-more {
+  float: right;
+  padding: 0.5rem;
+  background: var(--pale-silver);
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  cursor: pointer;
+  color: var(--dark-lava);
+}
+
+.post .read-more:hover {
+  float: right;
+  padding: 0.5rem;
+  background: var(--melon);
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+/* footer */
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1ch;
+  background-color: var(--middle-grey);
+  align-items: center;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: lighter;
+  color: var(--isabelline);
+}
+
+/* media queries */
+
+@media only screen and (max-width: 660px) {
+  .about {
+    flex-direction: column;
+    height: unset;
+  }
+
+  .about img {
+    height: 200px !important;
+    width: 200px !important;
+    margin: auto;
+  }
+
+  .about .text {
+    height: 120px;
+  }
 }
